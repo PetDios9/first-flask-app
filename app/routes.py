@@ -11,7 +11,6 @@ from urllib.parse import urlsplit
 @app.route("/index")
 @login_required
 def index():
-    user = {"username": "Peter"}
     posts = [
         {
             "author": {"username": "Kevin"},
@@ -22,7 +21,7 @@ def index():
             "body": "Saw Dune 2 yesterday, such a good movie!",
         },
     ]
-    return render_template("index.html", title="Home", user=user, posts=posts)
+    return render_template("index.html", title="Home", posts=posts)
 
 
 @app.route("/login", methods=["GET", "POST"])
