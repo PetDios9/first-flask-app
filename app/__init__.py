@@ -36,9 +36,7 @@ if not app.debug:
     # writes err logs to file
     if not os.path.exists("logs"):
         os.mkdir("logs")
-    file_handler = RotatingFileHandler(
-        "logs/microblog.log", maxBytes=10240, backupCount=10
-    )
+    file_handler = RotatingFileHandler("logs/blog.log", maxBytes=10240, backupCount=10)
     file_handler.setFormatter(
         logging.Formatter(
             "%(asctime)s %(levelname)s: %(message)s [in %(pathname)s:%(lineno)d]"
@@ -48,6 +46,6 @@ if not app.debug:
     app.logger.addHandler(file_handler)
 
     app.logger.setLevel(logging.INFO)
-    app.logger.info("Microblog startup")
+    app.logger.info("blog startup")
 
 from app import routes, models, errors
